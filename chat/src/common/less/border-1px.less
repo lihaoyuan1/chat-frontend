@@ -1,0 +1,28 @@
+.border-1px-div(@color){
+  &:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    content: ' ';
+    border: 1px solid rgba(7, 17, 27, 0.2);
+    border-radius: 5px;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+  .border-1px-div{
+    &::after{
+      transform: scale(0.7) translate3d(-30%, -30%, 0);
+      -webkit-transform: scale(0.7) translate3d(-30%, -30%, 0);
+    }
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  .border-1px-div{
+    &::after{
+      transform: scale(0.5) translate3d(-50%, -50%, 0);
+      -webkit-transform: scale(0.5) translate3d(-50%, -50%, 0);
+    }
+  }
+}

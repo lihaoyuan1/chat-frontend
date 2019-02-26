@@ -1,0 +1,40 @@
+.error-tip{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  .container{
+    position: absolute;
+    left: 0;
+    bottom: 50px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    &.error-enter{
+      bottom: -30px;
+      opacity: 0;
+    }
+    &.error-leave-to{
+      opacity: 0;
+    }
+    &.error-enter-active, &.error-leave-active{
+      transition: all .3s;
+    }
+    span{
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      color: white;
+      &.error{
+        background-color: #c82333;
+      }
+      &.success{
+        background-color: #218838;
+      }
+    }
+  }
+}
