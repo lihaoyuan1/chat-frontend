@@ -1,0 +1,26 @@
+@import "../../common/less/border-1px";
+
+.friend-item{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  .border-bottom-1px(rgba(7, 17, 27, 0.2));
+  .name{
+    flex: 1;
+    font-size: 16px;
+    padding-left: 30px;
+  }
+  .status{
+    width: 80px;
+    text-align: center;
+    font-size: 12px;
+    &.on{
+      color: green;
+    }
+    &.off{
+      color: rgba(7, 17, 27, 0.5);
+    }
+  }
+}

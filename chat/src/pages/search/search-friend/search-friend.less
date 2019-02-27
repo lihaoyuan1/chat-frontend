@@ -1,0 +1,40 @@
+.search-friend{
+  position: absolute;
+  top: 95px;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  .search-box{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    font-size: 0;
+    padding: 0 10px;
+    color: rgba(7, 17, 27, 0.5);
+    .icon-icon_search{
+      display: inline-block;
+      font-size: 20px;
+      vertical-align: middle;
+    }
+    input{
+      flex: 1;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+  }
+  &.search-enter{
+    transform: translate3d(100%, 0, 0);
+  }
+  &.search-leave-to{
+    transform: translate3d(-100%, 0, 0);
+  }
+  &.search-enter-active, &.search-leave-active{
+    transition: all .5s;
+  }
+}

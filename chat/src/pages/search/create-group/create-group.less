@@ -1,0 +1,43 @@
+.create-group{
+  position: absolute;
+  top: 95px;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  .text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    input{
+      display: inline-block;
+      flex: 1;
+      padding: 0 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+    span{
+      display: inline-block;
+      width: 60px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      color: white;
+      border-radius: 5px;
+      background: rgb(0, 160, 240);
+    }
+  }
+  &.search-enter{
+    transform: translate3d(100%, 0, 0);
+  }
+  &.search-leave-to{
+    transform: translate3d(-100%, 0, 0);
+  }
+  &.search-enter-active, &.search-leave-active{
+    transition: all .5s;
+  }
+}
