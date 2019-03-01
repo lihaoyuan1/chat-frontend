@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('select', this.item.id)
+      this.$emit('select', this.item)
     }
   },
   filters: {

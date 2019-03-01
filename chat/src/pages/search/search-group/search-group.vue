@@ -34,10 +34,10 @@ export default {
     }
   },
   methods: {
-    handleSelect (groupId) {
+    handleSelect (object) {
       let data = {
         userId: this.id,
-        groupId: groupId
+        groupId: object.id
       }
       POST('/chat/user/add_group', data).then(res => {
         if (res.code === ERR_OK) {

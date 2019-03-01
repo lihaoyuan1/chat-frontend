@@ -39,10 +39,10 @@ export default {
     ])
   },
   methods: {
-    handleSelect (friendId) {
+    handleSelect (object) {
       let data = {
         meId: this.id,
-        friendId: friendId
+        friendId: object.id
       }
       POST('/chat/user/add_friend', data).then(res => {
         if (res.code === ERR_OK) {

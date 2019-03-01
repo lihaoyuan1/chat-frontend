@@ -12,6 +12,7 @@
       <router-link :to="{name: 'message'}" tag="div" class="link">
         <i class="icon-font icon-icon_message"></i><br/>
         <span>消息</span>
+        <div class="tip" ref="tip" v-show="showTip"></div>
       </router-link>
       <router-link :to="{name: 'friend'}" tag="div" class="link">
         <i class="icon-font icon-friend"></i><br/>
@@ -23,16 +24,40 @@
       </router-link>
     </div>
     <transition name="main">
-      <router-view></router-view>
+      <router-view @closeTip="closeTip" @send="sendMessage" ref="chat"></router-view>
     </transition>
   </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import {host} from '../../common/js/api'
 
 export default {
   name: 'main-page',
+  data () {
+    return {
+      showTip: false
+    }
+  },
+  methods: {
+    closeTip () {
+      this.showTip = false
+    },
+    sendMessage (message) {
+      this.websocket.send(message)
+    },
+    onOpen () {},
+    onClose () {},
+    onMessage (message) {
+      if (this.location === 'chat') {
+        this.$refs.chat.saveMessage(message.data)
+      } else {
+        this.showTip = true
+      }
+    },
+    onError () {}
+  },
   computed: {
     tip () {
       if (this.location === 'message') {
@@ -55,6 +80,13 @@ export default {
     if (!this.id) {
       this.$router.push({name: 'login'})
     }
+  },
+  mounted () {
+    this.websocket = new WebSocket('ws://' + host + '/chat/web_socket/' + this.id)
+    this.websocket.onopen = this.onOpen
+    this.websocket.onclose = this.onClose
+    this.websocket.onmessage = this.onMessage
+    this.websocket.onerror = this.onError
   }
 }
 </script>
